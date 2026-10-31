@@ -1,1 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>CARGO PRO</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f5f7;
+  color: #171717;
+}
+
+header {
+  background: #171717;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.logo span {
+  color: #ed1c24;
+}
+
+.badge {
+  background: #ed1c24;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-size: 11px;
+}
+
+.container {
+  display: flex;
+  min-height: calc(100vh - 65px);
+}
+
+.sidebar {
+  width: 240px;
+  background: #202020;
+  padding: 20px 12px;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 7px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sidebar button.active,
+.sidebar button:hover {
+  background: #ed1c24;
+}
+
+main {
+  flex: 1;
+  padding: 25px;
+  min-width: 0;
+}
+
+.page-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 13px;
+  box-shadow: 0 3px 12px #00000008;
+}
+
+.card small {
+  color: #777;
+}
+
+.card h2 {
+  font-size: 27px;
+  margin-top: 12px;
+}
+
+.red {
+  color: #ed1c24;
+}
+
+.panel {
+  background: white;
+  padding: 25px;
+  border-radius: 13px;
+  min-height: 200px;
+}
+
+.panel h3 {
+  margin-bottom: 15px;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+.coming {
+  padding: 20px;
+  background: #fff4f4;
+  border-radius: 10px;
+  color: #b91c1c;
+}
+
+@media(max-width: 850px) {
+  .container {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+  }
+
+  .sidebar button {
+    min-width: 125px;
+    text-align: center;
+  }
+
+  main {
+    padding: 15px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 400px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .card h2 {
+    font-size: 21px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">CARGO <span>PRO</span></div>
+  <div class="badge">PREMIUM SYSTEM</div>
+</header>
+
+<div class="container">
+
+<nav class="sidebar">
+
+<button class="active" onclick="showPage('dashboard',this)">📊 Dashboard</button>
+
+<button onclick="showPage('parties',this)">🚚 Партиялар</button>
+
+<button onclick="showPage('clients',this)">👥 Кардарлар</button>
+
+<button onclick="showPage('parcels',this)">📦 Посылкалар</button>
+
+<button onclick="showPage('finance',this)">💰 Финансы</button>
+
+<button onclick="showPage('company',this)">🏢 Компания</button>
+
+<button onclick="showPage('import',this)">📥 IMPORT DATA</button>
+
+<button onclick="showPage('premium',this)">👑 PREMIUM PLAN 360°</button>
+
+</nav>
+
+<main>
+
+<section id="dashboard" class="section active">
+
+<div class="page-title">Dashboard</div>
+<div class="subtitle">Cargo Business Management System</div>
+
+<div class="cards">
+
+<div class="card">
+<small>Бардык партиялар</small>
+<h2 id="totalParties">—</h2>
+</div>
+
+<div class="card">
+<small>Келген партиялар</small>
+<h2 id="arrivedParties">—</h2>
+</div>
+
+<div class="card">
+<small>Жолдогу партиялар</small>
+<h2 id="transitParties">—</h2>
+</div>
+
+<div class="card">
+<small>Жалпы жүк</small>
+<h2 id="totalKg">— KG</h2>
+</div>
+
+</div>
+
+<div class="panel">
+<h3>🚀 CARGO PRO</h3>
+<p>Компанияңызды бир системадан башкарыңыз.</p>
+</div>
+
+</section>
+
+<section id="parties" class="section">
+<div class="page-title">Партиялар</div>
+<div class="subtitle">Бардык жүк партияларын башкаруу</div>
+<div class="panel">
+<h3>🚚 Партиялар тизмеси</h3>
+<div class="coming">Партиялар API менен туташтыруу кийинки этапта жүргүзүлөт.</div>
+</div>
+</section>
+
+<section id="clients" class="section">
+<div class="page-title">Кардарлар</div>
+<div class="panel"><h3>👥 Кардарларды башкаруу</h3></div>
+</section>
+
+<section id="parcels" class="section">
+<div class="page-title">Посылкалар</div>
+<div class="panel"><h3>📦 Посылкаларды башкаруу</h3></div>
+</section>
+
+<section id="finance" class="section">
+<div class="page-title">Финансы</div>
+<div class="panel"><h3>💰 Киреше жана чыгашалар</h3></div>
+</section>
+
+<section id="company" class="section">
+<div class="page-title">Компания</div>
+<div class="panel"><h3>🏢 Компаниянын жөндөөлөрү</h3></div>
+</section>
+
+<section id="import" class="section">
+<div class="page-title">IMPORT DATA</div>
+<div class="panel">
+<h3>📥 Эски базаны көчүрүү</h3>
+<p>Google Sheets жана Excel маалыматтарын импорттоо.</p>
+</div>
+</section>
+
+<section id="premium" class="section">
+<div class="page-title">PREMIUM PLAN 360°</div>
+<div class="panel">
+<h3>👑 Бизнес аналитикасы</h3>
+<p>Максаттар, болжолдоо жана өсүү планы.</p>
+</div>
+</section>
+
+</main>
+</div>
+
+<script>
+function showPage(id, button) {
+
+  document.querySelectorAll('.section').forEach(function(page) {
+    page.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.sidebar button').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+
+  button.classList.add('active');
+}
+</script>
+
+</body>
+</html>
